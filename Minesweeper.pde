@@ -1,4 +1,3 @@
-
 import de.bezier.guido.*;
 private final static int NUM_ROWS = 20;
 private final static int NUM_COLS = 20;
@@ -89,7 +88,16 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        if(keyPressed == true){
+          marked = !marked;
+          if(marked == false){
+            clicked = false;
+        }
+        else if(bombs.contains(this)){
+          clicked = true;
+        }
+    
+    }
     }
 
     public void draw () 
@@ -113,13 +121,24 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        //your code here
-        return false;
+      if(r >= 0 && r <= NUM_ROWS && c >= 0 && c <= NUM_COLS){
+        return true;
+    }
+    return false;
     }
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
         //your code here
+        for(int r = row-1; r < row+2; r++){
+          for(int c = col-1; c < col+2; c++){
+            if(bombs.contains(buttons[r][c]) && isValid(r,c)){
+              numBombs++;
+            }
+          }
+        }
         return numBombs;
+          }
     }
-}
+
+       
