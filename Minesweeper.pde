@@ -96,9 +96,20 @@ public class MSButton
         else if(bombs.contains(this)){
           clicked = true;
         }
-    
+        else if(countBombs(r,c) > 0){
+          setLabel(str(countBombs(r,c)));
+        }
+        else{
+          for(int ROW = r-1; ROW < r+2; ROW++){
+            for(int COL = c-1; COL < c+2; COL++){
+              if(isValid(ROW, COL) && !buttons[ROW][COL].isClicked()){
+                buttons[ROW][COL].mousePressed();
+              }
+             }
+            }
+        }
     }
-    }
+}
 
     public void draw () 
     {    
