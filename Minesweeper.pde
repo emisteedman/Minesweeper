@@ -132,7 +132,7 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-      if(r >= 0 && r <= NUM_ROWS && c >= 0 && c <= NUM_COLS){
+      if(r >= 0 && r < NUM_ROWS && c >= 0 && c < NUM_COLS){
         return true;
     }
     return false;
