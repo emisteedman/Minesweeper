@@ -20,7 +20,7 @@ void setup ()
         buttons [rows][columns] = new MSButton(rows, columns);
       }
     }
-    for(int bombNum = 0; bombNum < 100; bombNum++){
+    for(int bombNum = 0; bombNum < 50; bombNum++){
       setBombs();
     }
 }
@@ -120,6 +120,7 @@ public class MSButton
           marked = !marked;
           if(marked == false){
             clicked = false;
+          }
         }
         else if(bombs.contains(this)){
           clicked = true;
@@ -138,7 +139,7 @@ public class MSButton
             }
         }
     }
-}
+
 
     public void draw () 
     {    
@@ -170,9 +171,9 @@ public class MSButton
     {
         int numBombs = 0;
         //your code here
-        for(int r = row-1; r < row+2; r++){
-          for(int c = col-1; c < col+2; c++){
-            if(bombs.contains(buttons[r][c]) && isValid(r,c)){
+        for(int rX = row-1; rX < row+2; rX++){
+          for(int cX = col-1; cX < col+2; cX++){
+            if(isValid(rX,cX) && bombs.contains(buttons[rX][cX])){
               numBombs++;
             }
           }
